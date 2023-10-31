@@ -1,0 +1,29 @@
+class WhattoDo
+
+instance variables int point
+also string weather
+
+constructor 2 parameters string and int
+
+sets this to that.
+
+
+void method SetWeather (string updatedWeather) {
+    get the weather to new weather.
+}
+
+the math method is a double () {
+    math.random generates random number to be called elsewhere in the code
+}
+
+distance method () {
+calls math method concatenates it with string to present some information about what the user is doing
+use the || && ! operators here
+{
+
+method retreat () {
+subtract points
+}
+
+
+

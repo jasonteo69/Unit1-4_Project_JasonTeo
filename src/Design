@@ -1,0 +1,16 @@
+user input
+
+
+prompts the user to pick three characters
+
+string something to nextLine;
+
+if (userinput.equals(some letter)) {
+call method this
+} else if (equals somethingelse) {
+call method that
+} else {
+call method other
+}
+
+while loop -- repeats info until game is over (condition is met)

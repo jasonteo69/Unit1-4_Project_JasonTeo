@@ -2,8 +2,8 @@ class WhattoDo
 
 instance variables int point
 also string weather
-
-constructor 2 parameters string and int
+also int health
+constructor 3 parameters string and int and int
 
 sets this to that.
 
@@ -25,5 +25,8 @@ method retreat () {
 subtract points
 }
 
+method rain {
+health - the random
+}
 
 

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -35,11 +34,14 @@ public class Main {
             System.out.println("You cannot flee from this event LOL try harder next time\nYour instructions will be presented to you now\n");
             System.out.println(player.beginGame());
         }
-            System.out.println("What is the upper and lower limit of the integer numbers you want to be working with?\nUpper: ");
+            System.out.print("What is the upper and lower limit of the integer numbers you want to be working with?\nIf you don't pick a number, the limits will be set to ten and zero, respectively\nUpper: ");
         int upperLimit = Integer.parseInt(s.nextLine());
-        System.out.println("Lower Limit: ");
+        player.getUpper(upperLimit);
+        System.out.print("Lower Limit: ");
         int lowerLimit = Integer.parseInt(s.nextLine());
+        player.getLower(lowerLimit);
 
+        System.out.println("We will begin after the three second countdown");
         player.countdown();
 
 

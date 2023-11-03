@@ -50,9 +50,17 @@ public class Introduction {
         }
         }
 
+        public void getUpper(int upperLimit) {
+        upper = upperLimit;
+        }
+
+        public void getLower(int lowerLimit) {
+        lower = lowerLimit;
+        }
+
 
     public String beginGame() {
-        return "You are competing against 3 other cars\nWithin a minute, try to answer all the questions correctly\nIt will be math based questions on simple addition, subtraction, and multiplication\nYou're score will be given to you at the end of the race\nGet a question right, your score increases // Answer incorrectly score goes down\nWe will begin after the countdown";
+        return "You are competing against 3 other cars\nWithin a minute, try to answer all the questions correctly\nIt will be math based questions on simple addition, subtraction, and multiplication\nYou're score will be given to you at the end of the race\nGet a question right, your score increases // Answer incorrectly score goes down\n";
     }
 
     public int expression() {
@@ -62,4 +70,9 @@ public class Introduction {
     public double retreat (int subtracted) {
         return answer - subtracted;
     }
+
+    public String equation(int num1, int num2) {
+
+    }
+
 }

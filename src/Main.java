@@ -35,16 +35,36 @@ public class Main {
             System.out.println(player.beginGame());
         }
             System.out.print("What is the upper and lower limit of the integer numbers you want to be working with?\nIf you don't pick a number, the limits will be set to ten and zero, respectively\nUpper: ");
-        int upperLimit = Integer.parseInt(s.nextLine());
-        player.getUpper(upperLimit);
-        System.out.print("Lower Limit: ");
-        int lowerLimit = Integer.parseInt(s.nextLine());
-        player.getLower(lowerLimit);
+
+        try {
+            int upperLimit = Integer.parseInt(s.nextLine());
+            player.getUpper(upperLimit);
+            System.out.print("Lower Limit: ");
+            int lowerLimit = Integer.parseInt(s.nextLine());
+            player.getLower(lowerLimit);
+        } catch (NumberFormatException e) {
+            System.out.println("You're no fun huh? Limits will be 10 and 0 now.");
+        }
 
         System.out.println("We will begin after the three second countdown");
         player.countdown();
 
+        System.out.println(player.equation());
+        int answer = Integer.parseInt(s.nextLine());
 
+        while (!player.finished()) {
+            if (player.correct(answer)) {
+                player.youSmart();
+                System.out.println(player.equation());
+                answer = Integer.parseInt(s.nextLine());
+            } else {
+                System.out.println("try again");
+                player.retreat(1);
+                answer = Integer.parseInt(s.nextLine());
+            }
+        }
+
+        System.out.println(player.finalStats());
 
     }
 }

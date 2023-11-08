@@ -1,14 +1,15 @@
 import java.util.concurrent.TimeUnit;
 
 public class Introduction {
-    private int answer, lower, upper;
+    private int score, lower, upper, incorrect;
     private int random1, random2;
     private String sign;
 
-    public Introduction(int answer, int lower, int upper) {
+    public Introduction(int answer, int lower, int upper, int incorrect) {
         this.lower = lower;
         this.upper = upper;
-        this.answer = answer;
+        this.score = answer;
+        this.incorrect = incorrect;
     }
 
     public String car1() {
@@ -53,11 +54,11 @@ public class Introduction {
     }
 
     public boolean finished() {
-        return answer == 5;
+        return score == 9;
     }
 
     public void youSmart() {
-        answer++;
+        score++;
     }
 
     public void getUpper(int upperLimit) {
@@ -73,35 +74,29 @@ public class Introduction {
         return "You are competing against 3 other cars\nWithin a minute, try to answer all the questions correctly\nIt will be math based questions on simple addition, subtraction, and multiplication\nYou're score will be given to you at the end of the race\nGet a question right, your score increases // Answer incorrectly score goes down\n";
     }
 
-    public int expression() {
-        return (int) (Math.random() * 5) + 1;
-    }
 
     public double retreat (int subtracted) {
-        return answer - subtracted;
+        incorrect++;
+        return score - subtracted;
     }
 
-    private String operator() {
+    public String equation() {
 
         int operator = (int) (Math.random() * 3 + 1);
 
         if (operator == 1) {
             sign = " - ";
-            return " - ";
+            return "What is " + firstNumber() + sign + secondNumber() + ": ";
         } else if (operator == 2) {
             sign = " - ";
-            return " + ";
+            return "What is " + firstNumber() + sign + secondNumber() + ": ";
         } else {
             sign = " x ";
-            return " x ";
+            return "What is " + firstNumber() + sign + secondNumber() + ": ";
         }
 
     }
 
-    public String equation() {
-
-        return firstNumber() + operator() + secondNumber();
-    }
 
     private int firstNumber() {
         random1 = (int) (Math.random() * (upper - lower)) + lower;
@@ -123,6 +118,12 @@ public class Introduction {
     }
 
     public String finalStats() {
-        return "After a minute, you answered " + answer + "questions correctly";
+        score++;
+        if (incorrect > (score / 2)) {
+            return "Good job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 5 or more questions wrong, You were killed for not finishing first.\nYour position: 2";
+        }
+        else {
+            return "Good job! You reached the end of the race with " + score + " questions correctly answered\nYour position: 1";
+        }
     }
 }

@@ -4,7 +4,7 @@ public class Main {
         Scanner s = new Scanner(System.in);
         System.out.println("You've been kidnapped and forced to choose a car\nThere is no information other than you'll face consequences if you don't choose\nYou have four choices:\n(1 for car 1, 2 for car 2, 3 for car 3, 4 for car 4)\nWhich car will you pick?");
         String car = s.nextLine();
-        Introduction player = new Introduction(0, 10, 10);
+        Introduction player = new Introduction(0, 0, 10, 0);
         int carChoice = 0;
         try {
             carChoice = Integer.parseInt(car);
@@ -49,14 +49,14 @@ public class Main {
         System.out.println("We will begin after the three second countdown");
         player.countdown();
 
-        System.out.println(player.equation());
+        System.out.print(player.equation());
         int answer = Integer.parseInt(s.nextLine());
 
         while (!player.finished()) {
             if (player.correct(answer)) {
-                player.youSmart();
-                System.out.println(player.equation());
+                System.out.print(player.equation());
                 answer = Integer.parseInt(s.nextLine());
+                player.youSmart();
             } else {
                 System.out.println("try again");
                 player.retreat(1);

@@ -1,32 +1,50 @@
-class WhattoDo
+class race
 
-instance variables int point
-also string weather
-also int health
-constructor 3 parameters string and int and int
+instance variables int score, upper, lower, incorrect
+private int random1 random 2
+private string sign
 
 sets this to that.
 
 
-void method SetWeather (string updatedWeather) {
-    get the weather to new weather.
+void method race (int1, int2, int3, int4) {
+    set score, upper, lower, incorrect
 }
 
-the math method is a double () {
-    math.random generates random number to be called elsewhere in the code
+firstNumber {
+    math.random limits of upper and lower
 }
 
-distance method () {
-calls math method concatenates it with string to present some information about what the user is doing
-use the || && ! operators here
+secondNumber {
+math.random limits of upper and lower
+}
+
+correct method () {
+if answer to problem is correct return true
 {
 
 method retreat () {
 subtract points
 }
 
-method rain {
-health - the random
+method void right {
+add one to score.
+}
+
+method string finalstats {
+displays results of the game
+}
+
+string equation {
+gives an equation with a -, +, or x sign
+}
+
+Strings car1,2,3,4 {
+descriptions of cars
+}
+
+string randomCar {
+return result of car1,2,3,4 based on a math.random choice
 }
 
 

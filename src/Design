@@ -1,9 +1,17 @@
 user input
 
 
-prompts the user to pick three characters
+prompts the user to pick four characters
 
 string something to nextLine;
+
+call methods to display rules
+
+get user input for limits
+
+equation displayed
+
+variables methods called to store some info
 
 if (userinput.equals(some letter)) {
 call method this
@@ -14,3 +22,6 @@ call method other
 }
 
 while loop -- repeats info until game is over (condition is met)
+
+
+displays final information of the game (player statistics)

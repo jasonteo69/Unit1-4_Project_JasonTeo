@@ -6,7 +6,7 @@ public class Race {
     private String sign;
 
     /**
-     * Race represents the numbers used to calculate a problem
+     * Race represents the statistics and game stats
      */
     public Race(int answer, int lower, int upper, int incorrect) {
         this.lower = lower;
@@ -16,23 +16,22 @@ public class Race {
     }
 
     /**
-     *car1 - car4 represents descriptions of cars
+     * pickCar represents the
+     * @param randomNumber represents a car
+     * @return
      */
-    public String car1() {
-        return ("You're given a blue Mclaren\nThis supercar has a devastating 0 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)");
-    }
+     public String pickCar(int randomNumber) {
 
-    public String car2() {
-        return ("You're given a golf cart\nThis small little vehicle has a whopping 700 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)");
-    }
-
-    public String car3() {
-        return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
-    }
-
-    public String car4() {
-        return ("You're given a Tesla (let's go Elon Musk)\nThis electric powered vehicle has a whopping 483 horsepower???\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)");
-    }
+         if (randomNumber == 1) {
+             return "You're given a blue Mclaren\nThis supercar has a devastating 0 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+     } else if (randomNumber == 2) {
+             return "You're given a golf cart\nThis small little vehicle has a whopping 700 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+     } else if (randomNumber == 3) {
+             return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+     } else {
+             return "You're given a Tesla (let's go Elon Musk)\nThis electric powered vehicle has a whopping 483 horsepower???\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+     }
+     }
 
     /**
      * randomCar returns a random car description
@@ -41,13 +40,13 @@ public class Race {
     public String randomCar() {
         int randomCar = (int) (Math.random() * 4) + 1;
         if (randomCar == 4) {
-            return car4();
+            return pickCar(randomCar);
         } else if (randomCar == 3) {
-            return car3();
+            return pickCar(randomCar);
         } else if (randomCar == 2) {
-            return car2();
+            return pickCar(randomCar);
         } else {
-            return car1();
+            return pickCar(randomCar);
         }
     }
 
@@ -71,11 +70,11 @@ public class Race {
      */
 
     public boolean finished() {
-        return score == 9;
+        return score == 10;
     }
 
     /**
-     * youSmart is to be called when answering a question correctly
+     * youSmart is called when answering a question correctly
      */
 
     public void youSmart() {
@@ -104,7 +103,7 @@ public class Race {
      * @return a string of what's going on during the race and some more rules
      */
     public String beginGame() {
-        return "You are competing against 3 other cars\nWithin a minute, try to answer all the questions correctly\nIt will be math based questions on simple addition, subtraction, and multiplication\nYou're score will be given to you at the end of the race\nGet a question right, your score increases // Answer incorrectly score goes down\n";
+        return "You are competing against 3 other cars\nAnswer all the questions correctly until you are unable to\nIt will be math based questions on simple addition, subtraction, and multiplication\nYou're score will be given to you at the end of the race\nGet a question right, your score increases // Answer incorrectly score goes down\n";
     }
 
     /**
@@ -113,14 +112,14 @@ public class Race {
      * @return score - int subtracted
      */
 
-    public double retreat (int subtracted) {
+    public int retreat (int subtracted) {
         incorrect++;
         return score - subtracted;
     }
 
     /**
      * String equation will determine an equation for the user to solve
-     * @return a string with 2 numbers and a random operator to be solved
+     * @return a string with 2 numbers and a random operator between multiplication, division, and addition signs
      */
 
     public String equation() {
@@ -131,10 +130,10 @@ public class Race {
             sign = " - ";
             return "What is " + firstNumber() + sign + secondNumber() + ": ";
         } else if (operator == 2) {
-            sign = " - ";
+            sign = " x ";
             return "What is " + firstNumber() + sign + secondNumber() + ": ";
         } else {
-            sign = " x ";
+            sign = " + ";
             return "What is " + firstNumber() + sign + secondNumber() + ": ";
         }
 
@@ -166,7 +165,9 @@ public class Race {
             return answer == random1 - random2;
         } else if (sign.equals(" x ")) {
             return answer == random1 * random2;
-        } else return answer == random1 + random2;
+        } else {
+            return answer == random1 + random2;
+        }
     }
 
     /**
@@ -175,7 +176,6 @@ public class Race {
      */
 
     public String toString() {
-        score++;
         if (incorrect > (score / 2)) {
             return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 5 or more questions wrong, You were killed for not finishing first.\nYour position: 2\nYour status: dead";
         }

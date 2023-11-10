@@ -5,18 +5,11 @@ public class Main {
         System.out.println("\nYou've been kidnapped and forced to choose a car\nThere is no information other than you'll face consequences if you don't choose\nYou have four choices:\n(1 for car 1, 2 for car 2, 3 for car 3, 4 for car 4)\nWhich car will you pick?");
         String car = s.nextLine();
         Race player = new Race(0, 0, 10, 0);
-        int carChoice = 0;
+        int carChoice;
         try {
             carChoice = Integer.parseInt(car);
-
-            if (carChoice == 1) {
-                System.out.println(player.car1());
-            } else if (carChoice == 2) {
-                System.out.println(player.car2());
-            } else if (carChoice == 3) {
-                System.out.println(player.car3());
-            } else if (carChoice == 4) {
-                System.out.println(player.car4());
+            if (carChoice == 1 || carChoice == 2 || carChoice == 3 || carChoice == 4) {
+                System.out.println(player.pickCar(carChoice));
             } else {
                 System.out.println("That is not a car choice\nBecause you cannot pick between 4 numbers, a car will be given to you now randomly\n");
                 System.out.println(player.randomCar());
@@ -26,9 +19,9 @@ public class Main {
             System.out.println(player.randomCar());
         }
 
-        car = s.nextLine();
+        String ready = s.nextLine();
 
-        if (car.equals("y")) {
+        if (ready.equals("y")) {
             System.out.println("The rules will be presented to you after this line\n");
             System.out.println(player.beginGame());
         } else {
@@ -51,22 +44,27 @@ public class Main {
         player.countdown();
 
 
-        System.out.print(player.equation());
-        int answer = Integer.parseInt(s.nextLine());
+        try {
+            System.out.print(player.equation());
+            int answer;
 
-        while (!player.finished()) {
-            if (player.correct(answer)) {
-                System.out.print(player.equation());
+            while (!player.finished()) {
                 answer = Integer.parseInt(s.nextLine());
-                player.youSmart();
-            } else {
-                System.out.println("try again");
-                player.retreat(1);
-                answer = Integer.parseInt(s.nextLine());
+                if (player.correct(answer)) {
+                    player.youSmart();
+                    System.out.print(player.equation());
+                } else {
+                    System.out.println("try again");
+                    player.retreat(1);
+                }
             }
+
+            s.close();
+            System.out.println(player.toString());
         }
-
-        System.out.println(player.toString());
-
+        catch (NumberFormatException e) {
+            s.close();
+            System.out.println("\nTHAT IS NOT A NUMBER\nyou have been killed and ripped apart limb by limb, then eaten by your mates.\nstatus: dead");
+        }
     }
 }

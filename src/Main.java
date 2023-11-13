@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        System.out.println("\nYou've been kidnapped and forced to choose a car\nThere is no information other than you'll face consequences if you don't choose\nYou have four choices:\n(1 for car 1, 2 for car 2, 3 for car 3, 4 for car 4)\nWhich car will you pick?");
+        System.out.println("\nYou've been kidnapped and forced to choose a car\nThere is no information other than you'll face consequences if you don't choose\nYou have four choices:\n(1 for a blue McLaren, 2 for a golf cart, 3 for a Jeep Truck, and 4 for a Tesla)\nWhich car will you pick?");
         String car = s.nextLine();
         Race player = new Race(0, 0, 10, 0);
         int carChoice;
@@ -51,8 +51,8 @@ public class Main {
             while (!player.finished()) {
                 answer = Integer.parseInt(s.nextLine());
                 if (player.correct(answer)) {
-                    player.youSmart();
                     System.out.print(player.equation());
+                    player.youSmart();
                 } else {
                     System.out.println("try again");
                     player.retreat(1);

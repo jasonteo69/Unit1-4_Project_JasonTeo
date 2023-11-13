@@ -23,11 +23,11 @@ public class Race {
      public String pickCar(int randomNumber) {
 
          if (randomNumber == 1) {
-             return "You're given a blue Mclaren\nThis supercar has a devastating 0 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+             return "You're given a blue Mclaren\nThis supercar has a devastating 0 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
      } else if (randomNumber == 2) {
              return "You're given a golf cart\nThis small little vehicle has a whopping 700 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
      } else if (randomNumber == 3) {
-             return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horses\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+             return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
      } else {
              return "You're given a Tesla (let's go Elon Musk)\nThis electric powered vehicle has a whopping 483 horsepower???\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
      }
@@ -70,7 +70,7 @@ public class Race {
      */
 
     public boolean finished() {
-        return score == 10;
+        return score >= 10;
     }
 
     /**
@@ -177,10 +177,13 @@ public class Race {
 
     public String toString() {
         if (incorrect > (score / 2)) {
-            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 5 or more questions wrong, You were killed for not finishing first.\nYour position: 2\nYour status: dead";
+            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 5 or more questions wrong, You were killed for not finishing first.\nYour position: 2\nstatus: dead";
         }
         else {
-            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nYour position: 1\nYour status: high";
+            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nYour position: 1\nstatus: on top of the world";
         }
+    }
+    public void score() {
+        System.out.println(score);
     }
 }

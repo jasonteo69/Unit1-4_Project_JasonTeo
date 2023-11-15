@@ -51,8 +51,11 @@ public class Main {
             while (!player.finished()) {
                 answer = Integer.parseInt(s.nextLine());
                 if (player.correct(answer)) {
-                    System.out.print(player.equation());
                     player.youSmart();
+                    if (player.finished()) {
+                        break;
+                    }
+                    System.out.print(player.equation());
                 } else {
                     System.out.println("try again");
                     player.retreat(1);

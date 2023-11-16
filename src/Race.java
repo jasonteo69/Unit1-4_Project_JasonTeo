@@ -145,12 +145,12 @@ public class Race {
      */
 
     private int firstNumber() {
-        random1 = (int) (Math.random() * (upper - lower)) + lower;
+        random1 = (int) (Math.random() * (upper - lower + 1)) + lower;
         return random1;
     }
 
     private int secondNumber() {
-        random2 = (int) (Math.random() * (upper - lower)) + lower;
+        random2 = (int) (Math.random() * (upper - lower + 1)) + lower;
         return random2;
     }
 

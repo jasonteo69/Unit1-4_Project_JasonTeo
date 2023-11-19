@@ -1,16 +1,21 @@
-class race
-
-instance variables int score, upper, lower, incorrect
-private int random1 random 2
-private string sign
-
-sets this to that.
+public class Race
+    initializes private variables:
+    -int score, lower, upper, incorrect
+    -private int random1, random2
+    -private String sign
 
 
-void method race (int1, int2, int3, int4) {
-    set score, upper, lower, incorrect
+public Race (int1, int2, int3, int4) {
+    set score, upper, lower, incorrect to int 1,2,3,4 respectively
 }
 
+String pickCar(int randomNumber) {
+depending on randomNumber, a string of a description of a car will be returned
+}
+
+void countdown() {
+adds a visual effect, displays a 3 second countdown
+}
 firstNumber {
     math.random limits of upper and lower
 }
@@ -20,18 +25,19 @@ math.random limits of upper and lower
 }
 
 correct method () {
-if answer to problem is correct return true
+if answer to problem given by equation method is correct, return true
 {
 
-method retreat () {
+method retreat (int subtracted) {
 subtract points
+returns score - subtracted
 }
 
-method void right {
+method void youSmart {
 add one to score.
 }
 
-method string finalstats {
+String toString {
 displays results of the game
 }
 
@@ -39,12 +45,9 @@ string equation {
 gives an equation with a -, +, or x sign
 }
 
-Strings car1,2,3,4 {
-descriptions of cars
-}
 
 string randomCar {
-return result of car1,2,3,4 based on a math.random choice
+return result of car 1,2,3,4 based on a math.random choice
 }
 
 

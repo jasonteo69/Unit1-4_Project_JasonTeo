@@ -1,27 +1,12 @@
-user input
+prompts user to pick 4 different choices, with different descriptions following each choice
 
+asks the user if they are ready to begin the game - the result will be the same no matter what they choose
 
-prompts the user to pick four characters
+asks the user to pick integer numbers for upper and lower limits of the game
+if they don't, the limits will be set to 10 as the highest and 0 as the lowest
 
-string something to nextLine;
+display a three second countdown to add a visual effect like a race starting
 
-call methods to display rules
+asks math questions until the user gets 10 of them correct
 
-get user input for limits
-
-equation displayed
-
-variables methods called to store some info
-
-if (userinput.equals(some letter)) {
-call method this
-} else if (equals somethingelse) {
-call method that
-} else {
-call method other
-}
-
-while loop -- repeats info until game is over (condition is met)
-
-
-displays final information of the game (player statistics)
+displays the result of game when an ending is reached

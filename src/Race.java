@@ -16,25 +16,26 @@ public class Race {
     }
 
     /**
-     * pickCar represents the
-     * @param randomNumber represents a car
-     * @return
+     * pickCar represents the choices of cars the user has
+     * @param randomNumber represents a car choice
+     * @return a string of car descriptions
      */
-     public String pickCar(int randomNumber) {
+    public String pickCar(int randomNumber) {
 
-         if (randomNumber == 1) {
-             return "You're given a blue Mclaren\nThis supercar has a devastating 0 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
-     } else if (randomNumber == 2) {
-             return "You're given a golf cart\nThis small little vehicle has a whopping 700 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
-     } else if (randomNumber == 3) {
-             return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
-     } else {
-             return "You're given a Tesla (let's go Elon Musk)\nThis electric powered vehicle has a whopping 483 horsepower???\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
-     }
-     }
+        if (randomNumber == 1) {
+            return "You're given a blue Mclaren\nThis supercar has a devastating 0 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+        } else if (randomNumber == 2) {
+            return "You're given a golf cart\nThis small little vehicle has a whopping 700 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+        } else if (randomNumber == 3) {
+            return "You're given a Jeep truck\nThis monster of a machine has a decent 100 horsepower\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+        } else {
+            return "You're given a Tesla (let's go Elon Musk)\nThis electric powered vehicle has a whopping 483 horsepower???\nYou need to help it win the race coming up\nAre you ready? (y for yes // n for no)";
+        }
+    }
 
     /**
-     * randomCar returns a random car description
+     * randomCar represents car descriptions from car 1 to car 4
+     * @return either car 1, car 2, car 3, or car 4's description
      */
 
     public String randomCar() {
@@ -57,16 +58,17 @@ public class Race {
     public void countdown() {
         try {
             for (int i = 3; i > 0; i--) {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(1); //waits one second before running again
                 System.out.println(i);
             }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (InterruptedException e) { //is neccessary because it's thrown whenever a thread is waiting, sleeping, or otherwise occupied and is interrupted
+            throw new RuntimeException(e); //allows for the code to be uninterrupted
         }
     }
 
     /**
      * finished is the condition met when the game is over
+     * @return true if score is greater than or equal to ten, false otherwise
      */
 
     public boolean finished() {
@@ -83,6 +85,7 @@ public class Race {
 
     /**
      * getUpper gets the upper limits of the user based on their input
+     *
      * @param upperLimit changes the private variable upper to upperLimit
      */
     public void getUpper(int upperLimit) {
@@ -91,6 +94,7 @@ public class Race {
 
     /**
      * getLower gets the lower limits of the user based on their input
+     *
      * @param lowerLimit changes the private variable to lowerLimit
      */
 
@@ -100,6 +104,7 @@ public class Race {
 
     /**
      * String beginGame are more rules to be presented when the user reaches the point before they start the game
+     *
      * @return a string of what's going on during the race and some more rules
      */
     public String beginGame() {
@@ -108,17 +113,19 @@ public class Race {
 
     /**
      * keeps track of number of incorrect answers
+     *
      * @param subtracted represents a number based the math problem depending on difficulty of problem
      * @return score - int subtracted
      */
 
-    public int retreat (int subtracted) {
+    public int retreat(int subtracted) {
         incorrect++;
         return score - subtracted;
     }
 
     /**
      * String equation will determine an equation for the user to solve
+     *
      * @return a string with 2 numbers and a random operator between multiplication, division, and addition signs
      */
 
@@ -141,21 +148,23 @@ public class Race {
 
     /**
      * firstNumber and secondNumber represents numbers within the upper and lower limits
+     *
      * @return a random number in the range of limits provided by user
      */
 
     private int firstNumber() {
-        random1 = (int) (Math.random() * (upper - lower + 1)) + lower;
+        random1 = (int) (Math.random() * (upper - lower)) + lower;
         return random1;
     }
 
     private int secondNumber() {
-        random2 = (int) (Math.random() * (upper - lower + 1)) + lower;
+        random2 = (int) (Math.random() * (upper - lower)) + lower;
         return random2;
     }
 
     /**
      * checks if your answer to the question is correct
+     *
      * @param answer is an integer representing the answer of the user to the equation provided to them
      * @return if answer matches with the equation given to them
      */
@@ -172,18 +181,15 @@ public class Race {
 
     /**
      * toString will determine if you survive or not based on your answers to the questions
-     * @return a string where you survive if answered more than half the questions right, if not then a string where you're dead
+     *
+     * @return a string where you survive if answered 3 or more of the questions right, if not then a string where you're dead
      */
 
     public String toString() {
-        if (incorrect > (score / 2)) {
-            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 5 or more questions wrong, You were killed for not finishing first.\nYour position: 2\nstatus: dead";
+        if (incorrect >= 3) {
+            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nHowever, since you got 3 or more questions wrong, You were killed for not finishing first.\nYour position: 2nd\nstatus: dead";
+        } else {
+            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nYour position: 1st\nstatus: on top of the world";
         }
-        else {
-            return "\nGood job! You reached the end of the race with " + score + " questions correctly answered\nYour position: 1\nstatus: on top of the world";
-        }
-    }
-    public void score() {
-        System.out.println(score);
     }
 }
